@@ -17,10 +17,19 @@ public class java_study {
 		mbr.add( new member("나혜석","na@gmail.com","여성",1023349854) );
 		mbr.add( new member("정도전","roadbefore@naver.com","남성",1043330305) );
 		
+		System.out.println( mbr.get(2) );
+		System.out.println( mbr.size()  );
+		System.out.println( mbr.subList(1, 4)  );
+		
+		member tmp = new member("정도전","roadbefore@naver.com","남성",1043330305);
+		
+		System.out.println( mbr.indexOf(tmp)  );
+		System.out.println( mbr.contains(tmp) );
+		// indexOf()
+		
 		
 		//System.out.println(  mbr );
-		
-		
+
 		
 //		ArrayList<Integer> arr = new ArrayList<Integer>();
 //

@@ -19,6 +19,14 @@ public class member {
 		return "이름 : "+name+" 이메일 : "+email+" 연락처 : "+myPhone()+" 성별 : "+gender;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		
+		member tmp = (member)o;
+		return this.name.equals( tmp.name);
+	}
+	
+	
 	public String myPhone() {
 		String tmp = Integer.toString(phone);
 		String p1 = tmp.substring(0,2);
