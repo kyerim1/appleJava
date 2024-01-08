@@ -2,6 +2,7 @@ package cafe;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -25,18 +26,37 @@ public class Order_Counter {
 
 		user = login();
 		// 주문
+		HashMap<Category, Set<menu>> cafeMenu = classTask();
+		Order.kiosk(cafeMenu);
 	}
 	
 	
-	public static HashMap<Category, Set> classTask(){
+	public static HashMap<Category, Set<menu>> classTask(){
 		
 		Set<menu> 커피 = new HashSet<>();
 		Set<menu> 음료 = new HashSet<>();
 		Set<menu> 빽스치노 = new HashSet<>();
 		
+		Iterator<String> it = Menu.keySet().iterator();
+		while(it.hasNext()) {
+			String key = it.next();
+			if(  Menu.get(key).getType()==Category.커피  ) {
+				커피.add(Menu.get(key));
+			}else if( Menu.get(key).getType() == Category.음료) {
+				 음료.add(Menu.get(key));
+			}else if( Menu.get(key).getType() == Category.빽스치노 ) {
+				빽스치노.add(Menu.get(key));
+			}
+		}
+		
+		HashMap<Category, Set<menu>> map = new HashMap<Category, Set<menu>>();
+		
+		map.put(Category.커피, 커피);
+		map.put(Category.음료, 음료);
+		map.put(Category.빽스치노, 빽스치노);
 		
 		
-		return null;
+		return map;
 	}
 	
 	
