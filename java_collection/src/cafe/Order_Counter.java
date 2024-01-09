@@ -1,5 +1,11 @@
 package cafe;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -7,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import customer.Order_History;
 import customer.member;
 
 public class Order_Counter {
@@ -25,11 +32,86 @@ public class Order_Counter {
 		// 로그인부터 주문 과정까지를 제작
 
 		user = login();
-		// 주문
-		HashMap<Category, Set<menu>> cafeMenu = classTask();
-		Order.kiosk(cafeMenu);
+		
+		//관리자 로그인시  관리자메뉴로 만 보이게 주문안됨
+		if(user.getMid()==1000000) {
+			System.out.println("1. 판매 내역");
+			System.out.println("2. 메뉴 관리");
+			System.out.println("3. 재고 관리");
+			System.out.print("선택 : ");
+			int sel = scan.nextInt();
+			history_list();
+			
+		}else {
+			// 주문
+			HashMap<Category, Set<menu>> cafeMenu = classTask();
+			Order.kiosk(cafeMenu);
+		}
 	}
 	
+	private static void history_list() {
+		// 데이터베이스 사용(연결)
+		// 1. 데이터베이스 드라이버 로드
+		// 2. 데이터베이스 connection - 데이터베이스 url, 데이터베이스 계정
+		//                            데이터베이스 계정비밀번호
+		// 3. 쿼리문(query 또는 sql질의문) 작성
+		// 4. 쿼리문 전달 - Statement, PreparedStatement
+		// 5. 쿼리문의 결과 를 받아야 한다면 ResultSet 필요
+		
+		try {// 1. 데이터베이스 드라이버 로드
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		}catch(ClassNotFoundException e) {
+			System.out.println("드라이버 로드 실패");
+		}
+		
+		// 2. 데이터베이스 connection - 데이터베이스 url, 데이터베이스 계정
+				//                            데이터베이스 계정비밀번호
+		
+		Connection conn=null;
+		try {
+			String url="jdbc:mysql://localhost:3306/javaTest";
+			String user="javaTest";
+			String password="123456";
+			conn = DriverManager.getConnection(url,user,password);
+			
+		}catch(SQLException e) {
+			System.out.println("접속 실패");
+			e.printStackTrace();
+		}
+		
+		PreparedStatement pt = null;
+		ResultSet res=null;
+		
+// select 컬럼명 from 테이블명;  
+// select * from 테이블명 -> 모든 컬럼을 조회 하기
+		
+		String sql="select * from history";
+		List<Order_History> list = new ArrayList<>();
+		try {
+			
+			pt = conn.prepareStatement(sql);
+			res = pt.executeQuery(); // 쿼리전달하고 결과 받기
+			
+			while(res.next()) {
+				Order_History data = new Order_History(
+					res.getInt("num"), res.getString("customer"),
+					res.getString("menu"), res.getInt("price")
+				);
+				list.add(data);
+			}
+			
+		}catch(SQLException e) {
+			System.out.println("데이터 조회 실패");
+			e.printStackTrace();
+		}
+		
+		// 컬렉션 프레임워크 전용 순회 인터페이스 - Iterator
+		Iterator<Order_History> it = list.iterator();
+		while( it.hasNext() ) {
+			System.out.println( it.next());
+		}
+		
+	}
 	
 	public static HashMap<Category, Set<menu>> classTask(){
 		
