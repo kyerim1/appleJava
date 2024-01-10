@@ -3,6 +3,9 @@ package stream1;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -18,6 +21,18 @@ class member{
 		this.tel=tel;
 		this.addr=addr;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		member tmp = (member)o;
+		return this.tel.equals( tmp.tel );
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.tel.hashCode();
+	}
+	
 	
 	@Override
 	public String toString() {
@@ -66,7 +81,7 @@ public class test2 {
 		list.add( new member("이순신",34,"01012349999","아산시 초산동"));
 		list.add( new member("김유신",29,"01088883434","경주시 충효동"));
 		list.add( new member("장보고",45,"01077226453","진도군 진도읍"));
-		list.add( new member("장영실",37,"01043437586","대전광역시 중구"));
+		list.add( new member("장영실",37,"01088883434","대전광역시 중구"));
 		list.add( new member("이장대",25,"01000118844","대전광역시 서구"));
 
 		Stream<member> 나이 = list.stream().filter( m -> m.getAge() >= 30);
@@ -98,6 +113,76 @@ public class test2 {
 		std.stream().flatMapToInt( student -> 
 				IntStream.of(student.getEng(), student.getKor(), student.getMat()))
 		.average().ifPresent( avg->System.out.println( Math.round(avg*10)/10.0) );
+		
+		// map - 일대일 매핑 하여 새로운 스트림 생성, 값을 변환하거나 추출하여 새로운값 만들기
+		// flatMap - score 객체에서 추출해야할 값이 하나가 아니라 다수 이기때문에 map이 아니라
+		//           flatmap을 사용한다.
+		
+		List<Integer> number = Arrays.asList(1,2,3,4,5,4,3,5,6,3);
+		
+		number.stream().distinct().forEach(System.out::println);
+		
+		list.stream().distinct().forEach(System.out::println);
+		
+		// 총합 구하기 
+		System.out.println( IntStream.of(1,2,3,4,5).sum() );
+		
+		int[] num = new int[] {23,45,6,7,12};
+		int sum = Arrays.stream(num).sum();
+		System.out.println( sum );
+		OptionalDouble avg = Arrays.stream(num).average();
+		System.out.println( (int)avg.getAsDouble() );
+		// Arrays.stream(num).average().ifPresent(a-> System.out.println( (int)a) );
+		
+		OptionalInt min = Arrays.stream(num).min();
+		OptionalInt max = Arrays.stream(num).max();
+		System.out.println( min+ "   "+max);
+		
+		int minN=num[0];
+		int maxN=num[0];
+		for( int i=0; i< num.length; i++) {
+			if(minN > num[i])  minN = num[i];
+			if(maxN < num[i])  maxN = num[i];
+		}
+		System.out.println(minN+"  "+ maxN);
+		
+		
+		// reduce
+		Arrays.stream(num).reduce( (a,b)-> a*b ).ifPresent(a->System.out.println(a));
+		
+		Arrays.stream(num).filter(n-> n<10).reduce((a,b) -> a*b)
+		.ifPresent(r -> System.out.println(r));
+		
+		list.stream().map(member::getAge).reduce((a,b)-> a+b)
+			.ifPresent( res -> System.out.println(res) );
+		
+		// 각 객체에서 이름만 추출하여 하나의 문자열로 표형 하려면
+		Optional<String> names= list.stream().map(member::getName)
+				                        .reduce( (a,b)-> a+"-"+b );
+		System.out.println( names.get() );
+		
+		String plus="";
+		for(member m : list) {
+			String n = m.getName();
+			plus += n+"-";
+		}
+		plus = plus.substring(0, plus.length()-1);
+		System.out.println(  plus  );
+		
+		// mathcing -  매칭의 방법은 세가지가 있다.
+		//             1. 하나라도 조건을 만족하는 값이 있는가?  ( anyMatch )
+		//             2. 모두 조건을 만족하는가?  ( allMatch )
+		//             3. 모두 조건을 만족하지않는가? ( noneMatch )
+		
+		boolean any = Arrays.stream(num).anyMatch( n -> n >40 );
+		System.out.println("40보다 큰값 있나? " + any);
+		
+		boolean all = Arrays.stream(num).allMatch( n -> n >10 );
+		System.out.println("모든 숫자가 10보다 크냐  " + all);
+		
+		boolean none = Arrays.stream(num).noneMatch( n -> n > 50);
+		System.out.println("50보다 큰 숫자 없냐 ?  "+none );
+		
 	}
 
 }
