@@ -7,8 +7,8 @@
    %> 
    <div>
    	<ul style='display:flex; width:500px; justify-content:space-between;'>
-   		<li>메뉴1</li>
-   		<li>메뉴2</li>
+   		<li><a href="login.jsp">로그인</a></li>
+   		<li > 메뉴2 </li>
    		<li>메뉴3</li>
    		<li>메뉴4</li>
    		<li>메뉴5</li>

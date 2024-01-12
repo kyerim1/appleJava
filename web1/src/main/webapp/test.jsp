@@ -2,6 +2,12 @@
     pageEncoding="UTF-8" %>
 <%@ page import="java.util.Arrays" %>
 <%
+
+session.invalidate();
+
+
+
+
 	String name = request.getParameter("name");
 int age=0;
 // try{
