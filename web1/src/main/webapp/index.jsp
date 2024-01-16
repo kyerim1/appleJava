@@ -56,7 +56,8 @@ String[] names = {"이순신","김유신","장보고","문익점","최무선"};
 
 	if( session.getAttribute("user") !=null ){
 		user = (String)session.getAttribute("user");
-	}
+	} //로그인 성공시  user 변수는 값을 가지고, 로그인 하지 않은 상태에서는
+	//  user 변수는 null을 가진다.
  
 %>
 
@@ -67,7 +68,7 @@ String[] names = {"이순신","김유신","장보고","문익점","최무선"};
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="menu.jsp" %>
+	<% pageContext.include("menu.jsp?user="+user); %>
 	
 	<div id="wrap">
 		<ul>
