@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#content{
+	display:flex;
+	width:1000px;
+	gap:2%;
+	margin:0 auto;
+}
+.right{
+	width:49%;
+}
+
+.left{
+	width:49%;
+}
+
+.board_list li{
+	display:flex;
+	padding:7px 0;
+	text-align:center;
+	border-bottom:1px solid #999;
+}
+.num { width:15%;}
+.title{width:45%;}
+.date{width:20%;}
+.writer{width:20%;}
+.hnum, .htitle, .hdate, .hwriter{ font-weight:800; }
+
+
+
+
+
+
