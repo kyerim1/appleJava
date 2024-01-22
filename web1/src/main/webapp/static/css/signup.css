@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+
+#signup_wrap{
+	width:350px;
+	margin:80px auto;
+	display:flex;
+	flex-direction:column;
+	row-gap:15px;
+}
+.input{
+	display:flex;
+	justify-content:space-between;
+}
+.input input{
+	width:200px;
+	padding-left:10px;
+}
+#signup_bt{
+	width:100%;
+}
+
+
+
+
+
+

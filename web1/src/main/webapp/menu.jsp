@@ -13,7 +13,7 @@
    	<ul style='display:flex; width:500px; justify-content:space-between;'>
    		
    		<%   if( user==null){ %>
-   		<li> <a href="login.jsp">로그인</a> </li>
+   		<li> <a href="index.jsp?part=login">로그인</a> </li>
    		<%  } 
    			if(user !=null){ 
    		%>
@@ -26,6 +26,7 @@
       로그인 하지 않으면 페이지 이용할 권한이 없도록 만든다.
    --%>
    		<li onclick="move()">메뉴5</li> 
+   		<li ><a href="index.jsp?part=signup">회원가입</a></li>
    	</ul>
    </div>
    
