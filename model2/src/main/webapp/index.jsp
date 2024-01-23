@@ -22,8 +22,8 @@
  --%>
  
 <c:set var="part" value="main" scope="page" />
-<c:if test="${part !=null }" >
-	<c:set var="part" value="${part }"/>
+<c:if test="${prt !=null }" >
+	<c:set var="part" value="${prt }"/>
 </c:if>
 
     
