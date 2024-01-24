@@ -8,14 +8,14 @@
 	<div id="top">
 		<ul class="top_list">
 			<c:if test="${ sessionScope.user ==null }">
-				<li><a href="">로그인</a></li>
-				<li><a href="/members?cmd=signup">회원가입</a></li>
+				<li><a href="/members/signIn">로그인</a></li>
+				<li><a href="/members/signup">회원가입</a></li>
 			</c:if>
 			
 			<c:if test="${ sessionScope.user !=null }">
-				<li><a href=""></a></li>
-				<li><a href="">내정보</a></li>
-				<li><a href="">로그아웃</a></li>
+				<li><a href="/members/myWrite">${sessionScope.user.name }</a></li>
+				<li><a href="/members/myPage">내정보</a></li>
+				<li><a href="/members/logout">로그아웃</a></li>
 			</c:if>
 			
 			<li><a href="">HELP</a></li>
