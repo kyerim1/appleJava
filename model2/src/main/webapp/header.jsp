@@ -25,7 +25,7 @@
 		<ul class="menu_list">
 			<li class="menu"><a href="">WHY</a></li>
 			<li class="menu"><a href="">WHO</a></li>
-			<li class="menu"><a href="">STUDY</a></li>
+			<li class="menu"><a href="/board.do">STUDY</a></li>
 			<li class="menu"><a href="">TEST</a></li>
 		</ul>
 	</div>

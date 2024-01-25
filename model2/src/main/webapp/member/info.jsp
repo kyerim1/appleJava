@@ -8,17 +8,24 @@
 	<script> alert("먼저 로그인 해주세요");  history.back();</script>
 </c:if>
     
+<c:set var="img" value=""/>    
+<c:if test="${user.image !=null }">
+	<c:set var="img" value="style='background:url(http://192.168.0.68/static/image/${user.image }) no-repeat center; background-size:contain;'"/>
+</c:if>    
+    
 <div id="info_wrap">
 	<form method="post" action="/members/infoUpdate" enctype="multipart/form-data">
 		<button>수정</button>
 		<div id="grid">
-			<div class="item picture nonePicture">
+			<div class="item picture ${ user.image==null ? 'nonePicture': '' }" ${img }>
 				
-				<h4>사진을 등록하세요</h4>
-				<div>
-					<input type="file" name="face" id="face">
-					<label for="face">등록</label>
-				</div>
+				<c:if test="${user.image==null }">
+					<h4>사진을 등록하세요</h4>
+					<div>
+						<input type="file" name="face" id="face">
+						<label for="face">등록</label>
+					</div>
+				</c:if>
 				
 			</div>
 			<div class="item email_box">
