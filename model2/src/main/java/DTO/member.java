@@ -6,6 +6,7 @@ public class member {
 	private String password;
 	private String name;
 	private String tel;
+	private String image;
 	
 	public member(String email, String password, String name, String tel) {
 		this.email=email;
@@ -21,6 +22,12 @@ public class member {
 	}
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getNum() {
 		return num;
 	}
