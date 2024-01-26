@@ -21,5 +21,16 @@
   </servlet-mapping>
   
   
+  <servlet>
+  	<servlet-name>boardControl</servlet-name>
+  	<servlet-class>control.board_control</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>boardControl</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
   
 </web-app>
