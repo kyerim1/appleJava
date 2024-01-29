@@ -28,14 +28,30 @@
 	<div class="detail_text">
 		<div class="content">${data.content }</div>
 	</div>
-	<div class="update_del">
-		<button type="button" onclick="update('${data.id}')">수정</button>
-		<button type="button" onclick="delete('${data.id }')">삭제</button>
-	</div>
+	
+	<c:if test="${user.num == data.member_id }">
+		<div class="update_del">
+			<button type="button" onclick="update('${data.id}')">수정</button>
+			<button type="button" onclick="del('${data.id }')">삭제</button>
+		</div>
+	</c:if>
+	
 	<div id="reply_wrap">
 	</div>
-	
 </div>
+
+<script >
+	function update(i){
+		location.href="/board_updatePage.do?id="+i;
+	}
+	function del(i){
+		var really = confirm("정말로 삭제 하시겠습니까? ");
+		if( really){
+			location.href="/board_delete.do?id="+i;
+		}
+	}
+
+</script>
 
 
 
