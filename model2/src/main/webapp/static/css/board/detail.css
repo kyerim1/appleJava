@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*  detail.css */
+
+#detail_wrap{
+	width:1000px;
+	margin:0 auto;
+}
+.detail_text{
+	display:flex;
+	align-items:center;
+	gap:20px;
+	font-size:20px;
+	margin-bottom:20px;
+}
+.hit_box{display:flex; gap:10px;}
+.date_box{display:flex; gap:10px; color:#aaa;}
+.title_head{color:#aaa; font-weight:800;}
+.content{
+	width:100%;
+	padding:30px;
+	border-top:2px solid #ccc;
+	border-bottom:1px solid #ccc;
+}
+
+.update_del{text-align:right;}
+.update_del button{
+	border-radius:10px;
+	padding:7px 15px;
+	font-size:13px;
+	border:0;
+	cursor:pointer;
+	color:white;
+}
+.update_del button:nth-child(1){ background:#3498db;}
+.update_del button:nth-child(2){ background:#e74c3c;}
+
+
+
+
+

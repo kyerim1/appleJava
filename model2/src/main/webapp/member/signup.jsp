@@ -4,7 +4,7 @@
 <%@ page import="java.util.Arrays" %>
     
 <div id="signup_wrap">
-	<form id="signupFm" method="post" action="/members/signSave" >
+	<form id="signupFm" method="post" action="/members/signSave" enctype="multipart/form-data">
 		<input type="hidden" name="cmd" value="dao">
 		
 		<div class="myphoto">
