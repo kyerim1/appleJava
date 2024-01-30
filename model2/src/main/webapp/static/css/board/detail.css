@@ -35,6 +35,60 @@
 .update_del button:nth-child(2){ background:#e74c3c;}
 
 
+#reply_wrap{
+	width:100%;
+	position:relative;
+	padding:30px; 	
+}
+.reply_input{
+	border-bottom:2px solid #aaa;
+	width:100%;
+	padding:5px 0;
+}
+.input_box{
+	display:flex;
+	justify-content:space-between;
+	padding:10px 25px;
+}
+#comment{
+	width:80%;
+	height:72px;
+	resize:none;
+	font-size:1em;
+	padding:10px;
+}
+.reply_bt{
+	width:10%;
+	height:35px;
+	font-size:1.2em;
+	background:#2ecc71;
+	border:0;
+	border-radius:5px;
+	font-weight:700;
+	cursor:pointer;
+	align-self:end;
+}
 
-
+.reply_list{
+	width:100%;
+	padding:50px;
+}
+.reply_list_box li{
+	display:flex;
+	padding:20px 0;
+	border-bottom:1px solid #ccc;
+}
+.reply_info{
+	display:flex;
+	flex-direction:column;
+	width:15%;
+}
+.reply_comment{
+	width:80%;
+	white-space: pre-line;
+}
+.del_bt{
+	width:5%;
+	text-align:center;
+}
 
