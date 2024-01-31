@@ -64,7 +64,10 @@
 							<tr>
 								<td class="num numtd">${res.id }</td>
 								<td class="title titletd">
-									<a href="/board_read.do?id=${res.id }">${res.title }</a>
+									<a href="/board_read.do?id=${res.id }">
+										${res.title } 
+										<b style="color:red;">(${res.reply_cnt})</b>
+									</a>
 								</td>
 								<td class="date datetd">
    <fmt:formatDate value="${res.wdate }" pattern="yy.MM.dd HH:mm"/>
