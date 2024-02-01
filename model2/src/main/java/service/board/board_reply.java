@@ -32,8 +32,8 @@ public class board_reply  implements board_action{
 		
 		
 		//메일보내기
-		final String username="cloudnil@naver.com";
-		final String password="G82U1Z8FEYLT";
+		final String username="cloudless25@naver.com";
+		final String password="H47148VT84PB";
 		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.starttls.enable", "true");//tls 사용여부

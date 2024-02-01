@@ -29,8 +29,8 @@ public class member_findAuth  implements member_action{
 		
 		if( Arrays.asList(emails).contains(email) ) {// 회원가입된 이메일 인가? 확인
 			
-			final String username="cloudnil@naver.com";
-			final String password="G82U1Z8FEYLT";
+			final String username="cloudless25@naver.com";
+			final String password="H47148VT84PB";
 			
 			Properties prop = new Properties();
 			prop.put("mail.smtp.starttls.enable", "true");//tls 사용여부
