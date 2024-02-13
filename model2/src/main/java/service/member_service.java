@@ -13,7 +13,7 @@ import DAO.member_dao;
 import DTO.member;
 
 public class member_service implements member_action{
-	private member_dao mdao =new member_dao();
+	private member_dao mdao = new member_dao("a");
 	
 	@Override
 	public String action(HttpServletRequest request, HttpServletResponse response) throws IOException  {

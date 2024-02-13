@@ -16,6 +16,10 @@ import DTO.member;
 
 public class member_dao extends parent_dao{
 	
+	
+	public member_dao(String s) {
+		
+	}
 	//비밀번호변경
 	public void updatePassword(String email, String pin) {
 		String sql="update member set pw=? where email=?";
